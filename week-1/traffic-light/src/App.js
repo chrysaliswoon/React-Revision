@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <h1>Traffic Light</h1>
       {colors.map((element)=> (
-        <TrafficLight LightColors={element} LightStatus={lit}/>
+        <TrafficLight LightColors={element} LightStatus={lit} setColor={setLit}/>
       ))}
     </div>
   );
