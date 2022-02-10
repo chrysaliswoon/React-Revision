@@ -6,3 +6,7 @@ Concepts learned:
 - Create-React-App
 - Components
 - JSX
+- Nested Components
+- Passing Props
+- State
+- Lifting State

@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+# Learning Goals
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- Creating and nesting Components
+- Passing props and how to using them in JSX
+- Importing and setting up state
+- Updating state and re-rendering the Component
+- Adding and calling event listeners
 
-## Available Scripts
+# Stretch Goals
+### Bulb Component
+- Create a new `Bulb` Component that will render the a single bulb
+- Pass the `Bulb` Component the color it needs based the state of the application
 
-In the project directory, you can run:
 
-### `npm start`
+# Instructions
+#### TrafficLight Component
+- Examine the working live solution and determine the functionality needed
+- Examine the HTML provided in `src/index.html` as this contains the HTML elements needed for the design
+- Determine how best to organize the data needed to create the control panel and traffic bulbs
+- Create a file called bulbData.js that contains the above data however you decided to organize it
+- Create a `TrafficLight` Component 
+- Import `useState` into `TrafficLight`
+- Work out the remaining logic needed to implement the design
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### App Component
+- Import the data into App.js
+- Import the `TrafficLight` Component 
+- Render a single `TrafficLight` Component and pass it the data it needs 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Note:** App will render only a single instance of the TrafficLight Component.  Therefore, in App, do not loop over the array of data and create multiple instances. 
