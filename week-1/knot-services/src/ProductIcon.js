@@ -2,7 +2,7 @@ function ProductIcon(props) {
     
     return (
       <div className="ProductIcon">
-        <i class={props.icon}></i>
+        <i className={props.icon}></i>
       </div>
     );
   }

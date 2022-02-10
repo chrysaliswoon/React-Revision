@@ -8,8 +8,8 @@ function ProductList() {
     title: "Wedding Vision",
     description: "Define your wedding vendors",
     color: "#c7758f"
-  },
-  {
+    },
+    {
     icon: "fas fa-money-check-alt fa-2x",
     title: "Budgeter",
     description: "Get a personalized spending plan based on your unique budget.",
@@ -17,10 +17,19 @@ function ProductList() {
   }
 ]
 
-
     return (
       <div className="ProductList">
-          
+        {Product.map((el, index) => (
+          <ProductIcon 
+          icon={el.icon}
+          />
+        ))}
+        {Product.map((el, index) =>(
+          <ProductDescription 
+          title={el.title}
+          description={el.description}
+          />
+        ))}
       </div>
     );
   }
