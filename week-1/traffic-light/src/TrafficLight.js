@@ -1,9 +1,9 @@
 import React from 'react'
 
-function TrafficLight({LightColors}) {
+function TrafficLight({LightColors, LightStatus}) {
     return (
         <div>
-            <div className="TrafficLight" style={{backgroundColor:LightColors}}></div>
+            <div className="TrafficLight" style={{backgroundColor:LightColors === LightStatus? LightColors: 'grey'}}></div>
         </div>
     )
 }
