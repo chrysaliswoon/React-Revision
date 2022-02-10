@@ -1,7 +1,8 @@
-function ProductIcon() {
+function ProductIcon(props) {
+    
     return (
       <div className="ProductIcon">
-          <p>Product Icon</p>
+        <i class={props.icon}></i>
       </div>
     );
   }

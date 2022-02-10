@@ -1,7 +1,8 @@
-function ProductDescription() {
+function ProductDescription(props) {
     return (
       <div className="ProductDescription">
-          <p>Product Descriptions</p>
+          <h4>{props.title}</h4>
+          <p>{props.description}</p>
       </div>
     );
   }
