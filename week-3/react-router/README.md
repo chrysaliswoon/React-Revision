@@ -18,6 +18,8 @@ render(
 ```
 We are using the BrowserRouter to handle the whole App. React only handles the UI while BrowerRouter handles the routing to create a Single Page App (SPA).
 
+<br>
+
 ## Add Some Links
 
 ```
@@ -45,6 +47,8 @@ export default function App() {
 This gets the Components: Invoices & Expenses and renders it as a clickable link. This also changes the URL so it states /expenses. This is being controlled by the React Router.
 
 In other words, the link is changing the URL without causing a full page reload. 
+
+<br>
 
 ## Add Some Routes
 
@@ -108,6 +112,8 @@ For example, in the example below:
 
 This routes the user to the Expenses component when the user clicks on it.
 
+<br>
+
 ## Nested Routes
 
 ```
@@ -138,6 +144,8 @@ render(
 ```
 
 This nests the Expenses and Invoices element under the App element so we can navigate between the homepage, expenses and invoices page.
+
+<br>
 
 ## Listing the Invoices
 
@@ -174,6 +182,8 @@ export default function Invoices() {
 
 We create another component file called data which contains all of the invoices data. We will then map through the data component file to get the invoice number and make each invoice a clickable link that shows the details of the invoice.
 
+<br>
+
 ## Adding a "No Match" Route
 
 ```
@@ -201,12 +211,57 @@ So we create a route path for those that does not have match. In this case, if t
 
 You will notice that path=*. The star means that it will match only when no other routes do.
 
+<br>
+
 ## Reading a URL Params
 
+```
+File: src/index.js
 
+<Routes>
+  <Route path="/" element={<App />}>
+    <Route path="expenses" element={<Expenses />} />
+    <Route path="invoices" element={<Invoices />}>
+      <Route path=":invoiceId" element={<Invoice />} />
+    </Route>
+    <Route
+      path="*"
+      element={
+        <main style={{ padding: "1rem" }}>
+          <p>There's nothing here!</p>
+        </main>
+      }
+    />
+  </Route>
+</Routes>
+```
+
+In this example, we nest the following code under `<Route path="invoices" element={<Invoices />}>`
+
+``` 
+<Route path=":invoiceId" element={<Invoice />} /> 
+```
+
+This is so we the invoice component knows where to get the invoiceID.
+
+In order for the invoice component to show up, we will need to add an outlet to the parent layout route.
+
+```
+import { Link, Outlet } from "react-router-dom";
+
+<Outlet />
+```
+
+<br>
 
 ## Index Routes
 
+<br>
+
 ## Active Links
 
+<br>
+
 ## Search Params
+
+This specifies what parameters you are searching for and the React Router will access those parameter.
