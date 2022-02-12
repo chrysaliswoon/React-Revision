@@ -1,10 +1,13 @@
 import './App.css';
-import {Link} from 'react-router-dom'
+import {Outlet, Link} from 'react-router-dom'
 
 function App() {
   return (
     <div className="App">
-      <Link to=
+      <Link to="Home"> iStocks </Link> {" "}
+      <Link to="Stocks"> Stocks </Link> {" "}
+      <Link to="About"> About </Link>
+      <Outlet />
     </div>
   );
 }
