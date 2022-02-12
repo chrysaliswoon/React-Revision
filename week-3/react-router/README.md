@@ -1,70 +1,212 @@
-# Getting Started with Create React App
+# BookStore Invoice using React Router
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Connect the URL
+```
+File: src/index.js
 
-## Available Scripts
+import { render } from "react-dom";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
 
-In the project directory, you can run:
+const rootElement = document.getElementById("root");
+render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  rootElement
+);
+```
+We are using the BrowserRouter to handle the whole App. React only handles the UI while BrowerRouter handles the routing to create a Single Page App (SPA).
 
-### `npm start`
+## Add Some Links
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+File: src/App.js
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+import { Link } from "react-router-dom";
 
-### `npm test`
+export default function App() {
+  return (
+    <div>
+      <h1>Bookkeeper</h1>
+      <nav
+        style={{
+          borderBottom: "solid 1px",
+          paddingBottom: "1rem"
+        }}
+      >
+        <Link to="/invoices">Invoices</Link> |{" "}
+        <Link to="/expenses">Expenses</Link>
+      </nav>
+    </div>
+  );
+}
+```
+This gets the Components: Invoices & Expenses and renders it as a clickable link. This also changes the URL so it states /expenses. This is being controlled by the React Router.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+In other words, the link is changing the URL without causing a full page reload. 
 
-### `npm run build`
+## Add Some Routes
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+File: src/routes/expenses.js
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+export default function Expenses() {
+  return (
+    <main style={{ padding: "1rem 0" }}>
+      <h2>Expenses</h2>
+    </main>
+  );
+}
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+File: src/routes/invoices.js
 
-### `npm run eject`
+export default function Invoices() {
+  return (
+    <main style={{ padding: "1rem 0" }}>
+      <h2>Invoices</h2>
+    </main>
+  );
+}
+```
+We create these two components in a Routes folder so it's easier to identify any issues. 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+File: src/main.js
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+import { render } from "react-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
+import App from "./App";
+import Expenses from "./routes/expenses";
+import Invoices from "./routes/invoices";
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+const rootElement = document.getElementById("root");
+render(
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<App />} />
+      <Route path="expenses" element={<Expenses />} />
+      <Route path="invoices" element={<Invoices />} />
+    </Routes>
+  </BrowserRouter>,
+  rootElement
+);
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The Route path just indicates the routes, which in this case is "/", "expenses" and "invoices" to direct the user to. The element indicates what it will show. 
 
-## Learn More
+For example, in the example below:
+```
+<Route path="expenses" element={<Expenses />} />
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This routes the user to the Expenses component when the user clicks on it.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Nested Routes
 
-### Code Splitting
+```
+File: src/index.js
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+import { render } from "react-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
+import App from "./App";
+import Expenses from "./routes/expenses";
+import Invoices from "./routes/invoices";
 
-### Analyzing the Bundle Size
+const rootElement = document.getElementById("root");
+render(
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<App />}>
+        <Route path="expenses" element={<Expenses />} />
+        <Route path="invoices" element={<Invoices />} />
+      </Route>
+    </Routes>
+  </BrowserRouter>,
+  rootElement
+);
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+This nests the Expenses and Invoices element under the App element so we can navigate between the homepage, expenses and invoices page.
 
-### Making a Progressive Web App
+## Listing the Invoices
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```
+File: src/routes/invoices.js
 
-### Advanced Configuration
+import { Link } from "react-router-dom";
+import { getInvoices } from "../data";
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+export default function Invoices() {
+  let invoices = getInvoices();
+  return (
+    <div style={{ display: "flex" }}>
+      <nav
+        style={{
+          borderRight: "solid 1px",
+          padding: "1rem"
+        }}
+      >
+        {invoices.map(invoice => (
+          <Link
+            style={{ display: "block", margin: "1rem 0" }}
+            to={`/invoices/${invoice.number}`}
+            key={invoice.}
+          >
+            {invoice.name}
+          </Link>
+        ))}
+      </nav>
+    </div>
+  );
+}
+```
 
-### Deployment
+We create another component file called data which contains all of the invoices data. We will then map through the data component file to get the invoice number and make each invoice a clickable link that shows the details of the invoice.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Adding a "No Match" Route
 
-### `npm run build` fails to minify
+```
+File: src/index.js
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<Routes>
+  <Route path="/" element={<App />}>
+    <Route path="expenses" element={<Expenses />} />
+    <Route path="invoices" element={<Invoices />} />
+    <Route
+      path="*"
+      element={
+        <main style={{ padding: "1rem" }}>
+          <p>There's nothing here!</p>
+        </main>
+      }
+    />
+  </Route>
+</Routes>
+```
+
+If we were to click on the links as of now, the pages go blank. This is because none of the routes which we have created match a URL which we're linking to. 
+
+So we create a route path for those that does not have match. In this case, if the routes doesn't match a URL which we're linking to, it will say, "There's nothing here!".
+
+You will notice that path=*. The star means that it will match only when no other routes do.
+
+## Reading a URL Params
+
+
+
+## Index Routes
+
+## Active Links
+
+## Search Params
