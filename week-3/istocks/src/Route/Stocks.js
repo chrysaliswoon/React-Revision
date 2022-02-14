@@ -15,8 +15,8 @@ export default function Stocks() {
           {stocks.map(stock => (
             <Link
               style={{ display: "block", margin: "1rem 0" }}
-              to={`/stock-data/${stock.name}`}
-              key={stock.name}
+              to={`/stock-data/${stock.symbol}`}
+              key={stock.symbol}
             >
               {stock.name}
             </Link>

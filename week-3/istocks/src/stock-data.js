@@ -7,6 +7,9 @@ const stockData = [
     {name: "Intel Corporation", symbol: "INTL", lastPrice: 36.16, change: -0.370000000000005, high: 36.78, low: 36.125, open: 36.58}
 ]
 
-export function getStocks() {
-    return stockData
+export function getStocks(symbol) {
+    return stockData.find(
+        stock => stock.symbol === symbol
+    )
 }
+

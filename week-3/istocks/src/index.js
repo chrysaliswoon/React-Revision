@@ -6,6 +6,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Home from './Route/Home'
 import About from './Route/About'
 import Stocks from './Route/Stocks'
+import Stock from './Route/Stock'
 
 ReactDOM.render(
   <BrowserRouter>
@@ -13,7 +14,9 @@ ReactDOM.render(
         <Route path="/" element={<App />}>
           <Route path="/" element={<Home />} />
           <Route path="About" element={<About />} />
-          <Route path="Stocks" element={<Stocks />} />
+          <Route path="Stocks" element={<Stocks />} >
+            <Route path="StockId" element={<Stock />} />
+          </Route>
           <Route path="*" element={<p>There's nothing here!</p>}/>
         </Route>
       </Routes>
