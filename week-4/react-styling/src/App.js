@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./styles.css";
+import AllStyles from './AllStyles'
+import StandardCss from './StandardCss'
+import InlineStyle from './InlineStyles'
+import Module from './Modules'
+import StyledComponents from './StyledComponents'
+import Navigation from './Navigation'
+import {Route, Routes} from 'react-router-dom'
 
-function App() {
+
+export default function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navigation />
+      <Routes>
+        <Route exact path='/' element={<AllStyles />} />
+        <Route path='/standard' element={<StandardCss />} />
+        <Route path='/inline' element={<InlineStyle />} />
+        <Route path='/module' element={<Module />} />
+        <Route path='/styled-components' component={<StyledComponents />} />
+      </Routes>
+      <p>Instructor may add two more buttons for Secondary and Success</p>
+    </>
   );
 }
-
-export default App;
