@@ -1,7 +1,9 @@
+import App from './App'
+
 const Furniture = (props) => {
     return (
         <ul>
-            <li>{props.chair}</li>
+            <li onClick={props.onClick}>{props.chair}</li>
         </ul>
     )
 }
