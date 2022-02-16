@@ -23,7 +23,7 @@ function App() {
   // console.log(t2)
 
   const m1 = t.map(value => '<li>' + value * 2 + '</li>')
-  console.log(m1)
+  // console.log(m1)
 
   const object1 = {
     name: 'Arto Hellas',
@@ -46,7 +46,26 @@ function App() {
     department: 'Stanford University',
   }
 
-  console.log(object1.name) 
+  // console.log(object1.name) 
+
+  const arto = {
+    name: 'Arto Hellas',
+    age: 35,
+    education: 'PhD',
+    greet: function() {
+      console.log('hello, my name is ' + this.name)
+    },
+  }
+  // arto.greet()
+    
+  arto.growOlder = function() {
+      this.age += 1
+  }
+
+  console.log(arto.age)
+  arto.growOlder()
+  console.log(arto.age)
+  
 
   return (
     <div className="App">
