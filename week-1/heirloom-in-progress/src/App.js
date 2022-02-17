@@ -3,21 +3,20 @@ import React, {useState} from 'react'
 import Furniture from './Furniture'
 
 
-function App() {
-  const [ state, setState ] = useState("Grandma's Favorite Chair" )
-
-  const restore = () => setState(`Paint ${state} white`)
+export default function App() {
+  const [ item, setItem ] = useState("Grandma's Favorite Chair")
+  const restore = () => setItem(`Paint ${item} white`)
 
   return (
-    <div className="container">
+    <div className="App">
       <h1 className="shop-name">Heirloom Funiture Restoration</h1>
-      <li onClick={restore}>
-        {state}
-      </li>
+      <Furniture item={item} advice={restore}/>
     </div>
   );
 }
 
-export default App;
 
+// Instructions
 // let's fix this by only allowing the button to show up if recommendationMade is false
+// Let's update our state to have a key recommendationMade with a property of false to start
+// add a ternary operator to determine whether or not a button should be displayed in the Furniture component

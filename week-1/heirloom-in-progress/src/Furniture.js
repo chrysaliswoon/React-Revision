@@ -1,9 +1,9 @@
 import App from './App'
 
-const Furniture = (props) => {
+const Furniture = ({item, advice}) => {
     return (
         <ul>
-            <li onClick={props.onClick}>{props.chair}</li>
+            <li>{item} <button onClick={advice}>Restoration Advice</button></li>
         </ul>
     )
 }
