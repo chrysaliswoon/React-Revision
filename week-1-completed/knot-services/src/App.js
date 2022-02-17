@@ -3,9 +3,9 @@ import Product from './Product';
 
 function App() {
   return (
-    <div className="App">
+    <nav className="ListContainer">
       <Product />
-    </div>
+    </nav>
   );
 }
 

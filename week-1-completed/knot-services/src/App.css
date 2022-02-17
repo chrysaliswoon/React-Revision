@@ -1,0 +1,138 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Lora:400,700|Open+Sans:400,600|Roboto+Slab&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 1024px;
+}
+
+p {
+  text-align:center;
+}
+
+section {
+  width: 800px;
+  margin: 0 auto;
+}
+
+section p {
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+section article {
+  text-align: center;
+}
+
+#window-size {
+  font-size: 50px;
+  text-align: center;
+  margin: 50px;
+}
+
+
+div.image {
+  width: 900px;
+  margin: 0 auto;
+  border: 1px solid;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* ADD YOUR CSS BELOW */
+
+
+nav {
+  max-width:900px;
+  border: 1px solid black;
+  margin: 0 auto;
+}
+
+ul {
+ text-align:left;
+}
+
+.ListContainer ul {
+  list-style:none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+li.ItemContainer {
+  max-width: 185px;
+  flex: 1 0 185px;
+  padding: 20px;
+  text-align: center;
+}
+
+.ListContainer a {
+  text-decoration: none;
+  border: none;
+}
+
+li .ListContainer {
+  width: 800px;
+}
+
+li .ImageContainer {
+    margin-bottom: 2px;
+}
+
+li .ItemHeader {
+  font-family: Roboto Slab;
+  font-size: 13px;
+  font-weight: 600;
+   margin-bottom:5px;
+  letter-spacing: .5px;
+  line-height:1.4;
+}
+
+li .ItemHeading {
+  font-family: Open Sans;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 0.7em;
+
+}
+
+.ListContainer li:nth-of-type(1) i, .ListContainer li:nth-of-type(1) h4 {
+  color: #c7758f;
+}
+
+.ListContainer li:nth-of-type(2) i, .ListContainer li:nth-of-type(2) h4 {
+  color: #77b4c7;
+}
+
+.ListContainer li:nth-of-type(3) i, .ListContainer li:nth-of-type(3) h4 {
+  color: #96cbb4;
+}
+
+.ListContainer li:nth-of-type(4) i, .ListContainer li:nth-of-type(4) h4 {
+  color: #9589b8;
+}
+
+.ListContainer li:nth-of-type(5) i, .ListContainer li:nth-of-type(5) h4 {
+  color: #63c3c5;
+}
+
+.ListContainer li:nth-of-type(6) i, .ListContainer li:nth-of-type(6) h4 {
+  color: #d5ac5c;
+}
+
+.ListContainer li:nth-of-type(7) i, .ListContainer li:nth-of-type(7) h4 {
+  color: #f0838b;
+}
+
+.ListContainer li:nth-of-type(8) i, .ListContainer li:nth-of-type(8) h4 {
+  color: #f088ac;
+}

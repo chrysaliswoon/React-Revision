@@ -54,18 +54,16 @@ function ProductList(props) {
 ]
   
     return (
-      <div className="ProductList">
+      <ul>
             {Product.map((el, index) => (
-              <ProductIcon icon={el.icon}/>
+              <li class='ItemContainer'>
+              <ProductIcon icon={el.icon} />
+              <ProductDescription
+                title={el.title}
+                description={el.description} />
+                </li>
             ))}
-            {Product.map((el, index) => (
-              <ProductDescription 
-              title={el.title}
-              description={el.description}
-              />
-            ))}
-          
-      </div>
+      </ul>
     );
   }
   

@@ -1,7 +1,7 @@
 function ProductIcon(props) {
     
     return (
-      <div className="ProductIcon">
+      <div className="ImageContainer">
         <i className={props.icon}></i>
       </div>
     );

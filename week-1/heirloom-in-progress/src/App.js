@@ -5,12 +5,21 @@ import Furniture from './Furniture'
 
 export default function App() {
   const [ item, setItem ] = useState("Grandma's Favorite Chair")
-  const restore = () => setItem(`Paint ${item} white`)
+  // const restore = () => setItem(`Paint ${item} white`)
+  
+  const restore = () => {
+    setItem({
+      chair: `Paint ${item.chair} white`
+    })
+  }
 
   return (
     <div className="App">
       <h1 className="shop-name">Heirloom Funiture Restoration</h1>
-      <Furniture item={item} advice={restore}/>
+      <Furniture 
+      item={item} 
+      advice={restore}
+      />
     </div>
   );
 }
