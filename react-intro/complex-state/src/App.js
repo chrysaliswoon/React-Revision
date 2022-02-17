@@ -1,5 +1,7 @@
 import {useState} from 'react'
 import './App.css';
+import History from './History'
+import Button from './Button';
 
 // function App() {
 //   const [left, setLeft] = useState(0)
@@ -22,6 +24,18 @@ export default function App() {
     left: 0, right: 0
   })
 
+  const [allClicks, setAll] = useState([])
+
+  const handleLeftClick = () => {
+    setAll(allClicks.concat('L'))
+    setClicks({...clicks, left: clicks.left + 1})
+  }
+
+  const handleRightClick = () => {
+    setAll(allClicks.concat('R'))
+    setClicks({...clicks, right: clicks.right + 1})
+  }
+
   // const handleLeftClick = () => {
   //   const newClicks = {
   //     ...clicks,
@@ -40,18 +54,19 @@ export default function App() {
   //   setClicks(newClicks)
   // }
 
-  const handleLeftClick = () =>
-  setClicks({...clicks, left: clicks.left + 1})
+  // const handleLeftClick = () =>
+  // setClicks({...clicks, left: clicks.left + 1})
 
-  const handleRightClick = () =>
-  setClicks({...clicks, right: clicks.right + 1})
+  // const handleRightClick = () =>
+  // setClicks({...clicks, right: clicks.right + 1})
 
   return (
     <div className = "App">
       {clicks.left}
-      <button onClick={handleLeftClick}>Left</button>
-      <button onClick={handleRightClick}>Right</button>
+      <Button handleClick={handleLeftClick} text='left' />
+      <Button handleClick={handleRightClick} text='right' />
       {clicks.right}
+      <History allClicks={allClicks}/>
     </div>
   )
 }
