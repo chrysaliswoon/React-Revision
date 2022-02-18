@@ -1,3 +1,4 @@
+
 const receipt1 = {
     person: "Karolin",
     order: {
@@ -47,3 +48,5 @@ const receipt1 = {
     },
     paid: true,
   };
+
+  export default function()
