@@ -19,7 +19,7 @@ function App(props) {
         setValue(0)
       }
 
-      return {
+      return { // Change this to an Array instead of doing it as an Object
         value, 
         increase, 
         decrease, 
