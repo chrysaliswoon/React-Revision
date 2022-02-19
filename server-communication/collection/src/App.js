@@ -17,9 +17,9 @@ export default function App(props) {
     // console.log('button clicked', event.target)
     const noteObject = {
       content: newNote,
-      date: new Date().toISOString(),
-      important: Math.random() < 0.5,
-      id: notes.length + 1,
+      // date: new Date().toISOString(),
+      // important: Math.random() < 0.5,
+      // id: notes.length + 1,
     }
 
     // The new note is added to the list of notes using the concat array method
