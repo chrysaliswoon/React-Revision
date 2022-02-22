@@ -14,15 +14,19 @@ export default function App() {
     setCart([...cart,items])
   }
 
-  // create an removeFromCart function that takes in an index as a param
-  // using Array.filter remove create a new array where that item is removed
+  // create an removeFromCart function that takes in an index as a param and using Array.filter remove create a new array where that item is removed
+
+  const removeFromCart = index => { 
+    const cartArr = cart.filter((d, i) => i !== index)
+    setCart(cartArr)
+  }
 
   return (
     <div className="App">
       <h1>Chrysalis Shopping Mart</h1>
       <div className="products">
         <AllTheThings products = {products} handleClick={addToCart}/>
-        <MyShoppingCart cartItems = {cart} />
+        <MyShoppingCart cartItems = {cart} handleClick={removeFromCart}/>
       </div>
     </div>
   );
