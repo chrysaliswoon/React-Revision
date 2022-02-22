@@ -16,8 +16,8 @@ export default function App() {
 
   // create an removeFromCart function that takes in an index as a param and using Array.filter remove create a new array where that item is removed
 
-  const removeFromCart = index => { 
-    const cartArr = cart.filter((d, i) => i !== index)
+  const removeFromCart = productName => { 
+    const cartArr = cart.filter((item, i) => item.name !== productName)
     setCart(cartArr)
   }
 

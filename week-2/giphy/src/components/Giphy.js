@@ -1,17 +1,21 @@
 import axios from 'axios'
+import {useState} from 'react'
 
 
 export default function Giphy() {
-    axios
-    .get('http://api.giphy.com/v1/gifs/random?api_key=70QSlJM7VQ0zl5jEjnuAF7ig9zcki3Xu&tag=dog')
-    .then(response => {
-        const imageURL = response.data.data.title
-        console.log(imageURL)
-    })
+  const [picture, setPicture] = useState()
+
+
+    // axios
+    // .get('http://api.giphy.com/v1/gifs/random?api_key=70QSlJM7VQ0zl5jEjnuAF7ig9zcki3Xu&tag=dog')
+    // .then(response =>{
+    //     setPicture(response.data.data)
+        // console.log(response.data.data)
+    // })
 
     return (
       <div className="Giphy">
-        <p>{imageURL}</p> 
+        {picture && picture.title ? <img alt={picture.title} src={picture.url} /> : <div><p>"No picture request"</p></div>}
       </div>
     );
   }

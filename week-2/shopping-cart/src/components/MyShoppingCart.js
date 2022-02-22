@@ -7,8 +7,8 @@ export default function MyShoppingCart({cartItems, handleClick}) {
     <div className="MyShoppingCart">
       <h2>Your Cart!</h2>
       <ul>
-          {cartItems.map(cart => 
-          <li key={cart.name} onClick={() => handleClick(cart)}>
+          {cartItems.map((cart, index) => 
+          <li key={cart.name} onClick={() => handleClick(cart.name)}>
                {cart.name} - ${cart.price}
                <br/>
                [{cart.description}]
