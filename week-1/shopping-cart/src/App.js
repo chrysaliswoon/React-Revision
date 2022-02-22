@@ -22,7 +22,7 @@ export default function App() {
       <h1>Chrysalis Shopping Mart</h1>
       <div className="products">
         <AllTheThings products = {products} handleClick={addToCart}/>
-        <MyShoppingCart cartItems = {cart}/>
+        <MyShoppingCart cartItems = {cart} />
       </div>
     </div>
   );
