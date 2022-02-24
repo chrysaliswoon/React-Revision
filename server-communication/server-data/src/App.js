@@ -1,12 +1,13 @@
 import "./App.css";
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
+import axios from 'axios'
 import Note from './Note'
 
-export default function App(props) {
+export default function App() {
   // // const result = notes.map(note => note.id)
   // // console.log(result)
   // The component uses the useState function to initialize the piece of state stored in notes with the array of notes passed in the props
-  const [notes, setNotes] = useState(props.notes) 
+  const [notes, setNotes] = useState([]) 
   const [newNote, setNewNote] = useState('')
   const [showAll, setShowAll] = useState(true)
   
@@ -39,6 +40,17 @@ export default function App(props) {
   const notesToShow = showAll
   ? notes
   : notes.filter(note => note.important === true)
+
+  useEffect(() => {
+    console.log('effect')
+    axios
+    .get('http://localhost:3001/notes')
+    .then(response => {
+      console.log('promise fulfilled')
+      setNotes(response.data)
+    })
+  }, [])
+  console.log('render', notes.length, 'notes')
 
   return (
     <div className="App">
