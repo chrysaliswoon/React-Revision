@@ -1,44 +1,48 @@
-import {useState} from 'react'
-import NavBar from "../components/Navbar";
-import initialCard from '../data/cards'
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
-// console.log('card', card)
+function RandomCard() {
+  const [card, setCard] = useState({});
+  const [status, setStatus] = useState("idle");
+  const { id } = useParams();
 
-export default function RandomCard() {
+  const url = `https://api.magicthegathering.io/v1/cards/${id}`;
+  useEffect(() => {
+    setStatus("loading");
+    fetch(url)
+      .then((response) => {
+        if (!response.ok) {
+          setStatus("error");
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setCard(data.card);
+        setStatus("success");
+      })
+      .catch((error) => {
+        setStatus("error");
+        console.log(error);
+      });
+  }, []);
 
-    const [card, setCard] = useState(initialCard.card)
-
-    return (
-      <div className="MainPage">
-          <h1>Random Card</h1>
-          <NavBar />
-
-        {/* <table border="">
-        <thead>
-          <tr>
-            <th>Card Name</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td><img src="" alt="Angelic Arbiter" /></td>
-            <td>
-                <p>Card Description Here</p>
-            </td>
-          </tr>
-        </tbody>
-        </table> */}
-
-        <div>
-            <img src={card.imageUrl} alt="warrior"></img>
-        </div>
-        <div>
-            {card.name}
-        </div>
-      </div>
-    );
+  if (status === "loading") {
+    return <div>Loading...</div>;
   }
-  
-  
+
+  if (status === "error") {
+    return <div>Error!</div>;
+  }
+
+  return (
+    <>
+      <div>
+        <img src={card.imageUrl} alt={card.name} />
+      </div>
+      <div>{card.name}</div>
+    </>
+  );
+}
+
+export default RandomCard;

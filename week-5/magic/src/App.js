@@ -1,17 +1,22 @@
-// import './App.css';
-import {Routes} from 'react-router-dom'
-import { Route } from 'react-router';
-import {BrowserRouter} from 'react-router-dom'
-import MainPage from "./pages/MainPage";
-import RandomCard from "./pages/RandomCard";
+import { Routes, Route } from "react-router-dom"
+import { BrowserRouter } from "react-router-dom"
+import Navbar from "./components/Navbar"
+import MainPage from './pages/MainPage'
+import RandomCard from "./pages/RandomCard"
 
-export default function App() {
+function App() {
+
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route path="/home" element={<MainPage />} />
-        <Route path="/random" element={<RandomCard />} />
+        <Route path="/card" element={<RandomCard />} />
+        <Route path="/card/:id" element={<RandomCard />} />
       </Routes>
     </BrowserRouter>
   )
 }
+
+export default App
+
