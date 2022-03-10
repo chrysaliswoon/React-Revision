@@ -1,12 +1,19 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import CardRow from "./CardRow";
-import SearchForm from "./SearchForm";
+import SearchFormWithRoute from "./SearchFormWithRoute";
+
+const startURL = `https://api.magicthegathering.io/v1/cards/`;
 
 function MainPage() {
   const [cards, setCards] = useState([]);
   const [status, setStatus] = useState("idle");
+  const [url, setUrl] = useState(startURL); 
 
-  const url = `https://api.magicthegathering.io/v1/cards/`;
+  const location = useLocation({});
+
+
+  //? How to get the info From SearchForm
   useEffect(() => {
     setStatus("loading");
 
@@ -25,7 +32,7 @@ function MainPage() {
       }
     };
     fetchCards();
-  }, []);
+  }, [location]); //? Trigger the state change
 
   if (status === "loading") {
     return "Loading";
@@ -37,7 +44,9 @@ function MainPage() {
 
   return (
     <>
-      <SearchForm />
+      {/* <SearchForm searchUrlFn={setUrl} /> */}
+      <SearchFormWithRoute />
+      {/* <button onClick={handleClick}>Try</button> */}
       <table border="1">
         <thead>
           <tr>

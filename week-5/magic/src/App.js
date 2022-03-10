@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom"
 import { BrowserRouter } from "react-router-dom"
 import Navbar from "./components/Navbar"
-import MainPage from './pages/MainPage'
+import MainPage from "./pages/Main/MainPage"
 import RandomCard from "./pages/RandomCard"
 
 function App() {
@@ -19,4 +19,3 @@ function App() {
 }
 
 export default App
-
